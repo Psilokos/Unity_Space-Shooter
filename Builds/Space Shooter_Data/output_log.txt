@@ -1,20 +1,57 @@
-Initialize engine version: 4.6.2f1 (bd99309c2ad7)
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [aticfx64.dll 8.17.10.1299]
-    Renderer: AMD Radeon R9 270
-    Vendor:   ATI
-    VRAM:     2030 MB (via DXGI)
-    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=1
+    Version:  Direct3D 9.0c [aticfx64.dll 8.17.10.1230]
+    Renderer: Intel(R) HD Graphics Family
+    Vendor:   Intel
+    VRAM:     1071 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=0
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Victorien\Documents\Unity\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Victorien\Documents\Unity\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Victorien\Documents\Unity\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Victorien\Documents\Unity\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Victorien\Documents\Unity\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Victorien\Documents\Unity\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.056 seconds
+Platform assembly: C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.043 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-Platform assembly: C:\Users\Victorien\Documents\Unity\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 0.629498 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.585023 ms (FindLiveObjects: 0.011403 ms CreateObjectMapping: 0.007602 ms MarkObjects: 0.150532 ms  DeleteObjects: 0.013304 ms)
+
+UnloadTime: 0.391155 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.550051 ms (FindLiveObjects: 0.012544 ms CreateObjectMapping: 0.006842 ms MarkObjects: 0.150912 ms  DeleteObjects: 0.014445 ms)
+
+UnloadTime: 0.384693 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.684998 ms (FindLiveObjects: 0.010643 ms CreateObjectMapping: 0.007222 ms MarkObjects: 0.309427 ms  DeleteObjects: 0.004181 ms)
+
+UnloadTime: 0.359985 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.547390 ms (FindLiveObjects: 0.009883 ms CreateObjectMapping: 0.006842 ms MarkObjects: 0.140648 ms  DeleteObjects: 0.013684 ms)
+
+UnloadTime: 0.390395 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.545109 ms (FindLiveObjects: 0.009883 ms CreateObjectMapping: 0.007222 ms MarkObjects: 0.149772 ms  DeleteObjects: 0.013304 ms)
+
+UnloadTime: 0.398758 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 362.
+Total: 0.538647 ms (FindLiveObjects: 0.012924 ms CreateObjectMapping: 0.009883 ms MarkObjects: 0.161936 ms  DeleteObjects: 0.015965 ms)
+
