@@ -27,10 +27,24 @@ public class Shot : MonoBehaviour
 
 	private void Explode(ref Collider touched_collider, GameObject explosion)
 	{
+		GameController	game_controller;
+
 		if (this.tag == "PlayerShot")
+		{
 			this.GetComponentInParent<GameController>().UpdateScore(touched_collider.gameObject);
+			Instantiate(explosion, this.transform.position, this.transform.rotation);
+			Destroy(touched_collider.gameObject);
+		}
+		else if (this.tag == "EnemyShot")
+		{
+			game_controller = this.transform.parent.transform.parent.transform.parent.GetComponentInParent<GameController>();
+			game_controller.player_controller.UpdateLife(this.transform.parent.transform.parent.gameObject, -10);
+			if (game_controller.player_controller.life <= 0)
+			{
+				Instantiate(explosion, this.transform.position, this.transform.rotation);
+				Destroy(touched_collider.gameObject);
+			}
+		}
 		Destroy(this.gameObject);
-		Instantiate(explosion, this.transform.position, this.transform.rotation);
-		Destroy(touched_collider.gameObject);
 	}
 }

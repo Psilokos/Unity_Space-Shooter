@@ -21,7 +21,7 @@ public class Asteroid : MonoBehaviour
 		this.asteroid_nbr[0] = this.asteroid_1;
 		this.asteroid_nbr[1] = this.asteroid_2;
 		this.asteroid_nbr[2] = this.asteroid_3;
-		this.asteroid_model = Instantiate(this.asteroid_nbr[which_asteroid % 2], this.transform.position, this.transform.rotation) as GameObject;
+		this.asteroid_model = Instantiate(this.asteroid_nbr[which_asteroid % 3], this.transform.position, this.transform.rotation) as GameObject;
 		this.asteroid_model.transform.parent = this.transform;
 	}
 }

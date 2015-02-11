@@ -1,33 +1,51 @@
 ﻿using UnityEngine;
+using Random = UnityEngine.Random;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 
 public class GameController : MonoBehaviour
 {
-	public			Text			score_text;
-	public			GameObject		restart_text;
-	public			GameObject		player;
-	public			GameObject		asteroid;
-	public			GameObject		enemy;
-	public			float			time_before_first_wave;
-	public			float			time_between_spawns;
-	public			float			time_between_waves;
-	public			float			time_until_restart;
-	private			GameObject[]	wave_object;
-	private	static	GameObject		last_killed;
-	private			float			time_at_death;
-	private			bool			player_state;
-	private			int				score;
+	public			PlayerController	player_controller;
+	public			Text				score_text;
+	public			Text				high_score_text;
+	public			GameObject			life_text;
+	public			GameObject			restart_text;
+	public			GameObject			game_over_text;
+	public			GameObject			player;
+	public			GameObject			asteroid;
+	public			GameObject			enemy;
+	public			float				time_before_first_wave;
+	public			float				time_between_spawns;
+	public			float				time_between_waves;
+	public			float				time_until_restart;
+	private			GameObject[]		wave_object;
+	private	static	GameObject			last_killed;
+	private			float				time_at_death;
+	private			bool				player_state;
+	private			int					wave_cnt;
+	private			int					score;
+	private			int					high_score;
 
 	void Start()
 	{
 		GameController.last_killed	= null;
 		this.player_state			= true;
 		this.score					= 0;
+		this.wave_cnt				= 1;
 		this.wave_object			= new GameObject[2];
 		this.wave_object[0]			= this.asteroid;
 		this.wave_object[1]			= this.enemy;
 		this.restart_text.SetActive(!this.player_state);
+		this.game_over_text.SetActive(!this.player_state);
+		try
+		{
+			this.high_score	= Convert.ToInt32(System.IO.File.ReadAllText("high_score"));
+		}
+		catch
+		{
+			this.high_score	= 0;
+		}
 		StartCoroutine(this.SpawnWaves());
 	}
 
@@ -35,41 +53,54 @@ public class GameController : MonoBehaviour
 	{
 		if (Input.GetAxis("Quit") != 0)
 			Application.Quit();
+
 		if (!this.player && this.player_state)
 		{
 			this.time_at_death	= Time.time;
-			this.player_state	= false;
+			this.player_state	= !this.player_state;
+			this.game_over_text.SetActive(!this.player_state);
+			System.IO.File.WriteAllText("high_score", this.high_score.ToString());
 		}
 		else if (!this.player_state)
 			this.WaitUntilRestart();
+
+		if (this.score >= this.high_score)
+		{
+			this.high_score				= this.score;
+			this.high_score_text.text	= "High score: " + this.high_score.ToString();
+		}
 	}
 
 	private IEnumerator SpawnWaves()
 	{
-		int	wave_cnt = 1;
+		GameObject	enemy;
 
 		yield return new WaitForSeconds(this.time_before_first_wave);
+		this.score_text.text		= "Score: " + this.score.ToString() + "\nWave: " + this.wave_cnt.ToString();
+		this.high_score_text.text	= "High score: " + this.high_score.ToString();
 		while (this.player_state)
 		{
-			for (int i = 0; i < wave_cnt; ++i)
+			for (int i = 0; i < this.wave_cnt; ++i)
 			{
 				int	which_object = Random.Range(0, 3);
 
-				Instantiate
+				enemy = Instantiate
 				(
 					this.wave_object[(which_object < 2) ? (0) : (1)],
 					new Vector3(Random.Range(-4.5f, 4.5f), 0.0f, 13.0f),
 					Quaternion.identity
-				);
+				) as GameObject;
+				enemy.transform.parent = this.transform;
 				yield return new WaitForSeconds
 				(
-					(i < wave_cnt - 1) ?
+					(i < this.wave_cnt - 1) ?
 					(this.time_between_spawns) :
 					(0.0f)
 				);
 			}
-			++wave_cnt;
 			yield return new WaitForSeconds(this.time_between_waves);
+			++this.wave_cnt;
+			this.score_text.text = "Score: " + this.score.ToString() + "\nWave: " + this.wave_cnt.ToString();
 		}
 	}
 
@@ -77,6 +108,7 @@ public class GameController : MonoBehaviour
 	{
 		if (Time.time - this.time_at_death >= this.time_until_restart)
 		{
+			this.life_text.SetActive(this.player_state);
 			this.restart_text.SetActive(!this.player_state);
 			if (Input.GetKey(KeyCode.R))
 				Application.LoadLevel(Application.loadedLevel);
@@ -93,6 +125,6 @@ public class GameController : MonoBehaviour
 				this.score += 10;
 			GameController.last_killed = object_touched;
 		}
-		this.score_text.text = "Score: " + this.score.ToString();
+		this.score_text.text = "Score: " + this.score.ToString() + "\nWave: " + this.wave_cnt.ToString();
 	}
 }

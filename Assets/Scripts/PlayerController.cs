@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [System.Serializable]
@@ -12,18 +13,28 @@ public class PlayableAreaBoundary
 
 public class PlayerController : MonoBehaviour
 {
-	public	GameController			game_controller;
-    public	float					speed;
-    public	float					tilt;
-    public	PlayableAreaBoundary	boundary;
-	public	GameObject				explosion_asteroid;
-	public	GameObject				explosion_enemy;
-	public	GameObject				explosion_player;
-	public	GameObject				shot;
-	public	Transform				shot_spawn_left;
-	public	Transform				shot_spawn_right;
-	public	float					fire_rate;
-	private	float					next_shot = 0.0f;
+	public			GameController			game_controller;
+    public			PlayableAreaBoundary	boundary;
+	public			GameObject				explosion_asteroid;
+	public			GameObject				explosion_enemy;
+	public			GameObject				explosion_player;
+	public			GameObject				shot;
+	public			Transform				shot_spawn_left;
+	public			Transform				shot_spawn_right;
+	public			Text					life_text;
+	public			float					speed;
+	public			float					tilt;
+	public			float					fire_rate;
+	public			int						life { get; private set; }
+	private			float					next_shot;
+	private	static	GameObject				last_enemy_shot;
+
+	void Start()
+	{
+		PlayerController.last_enemy_shot	= null;
+		this.next_shot						= 0.0f;
+		this.life							= 100;
+	}
 
 	void Update()
 	{
@@ -36,7 +47,7 @@ public class PlayerController : MonoBehaviour
 			shots[0]			= Instantiate(this.shot, this.shot_spawn_left.position, this.shot_spawn_left.rotation) as GameObject;
 			shots[1]			= Instantiate(this.shot, this.shot_spawn_right.position, this.shot_spawn_right.rotation) as GameObject;
 			foreach (GameObject shot in shots)
-				shot.transform.parent = game_controller.transform;
+				shot.transform.parent = this.game_controller.transform;
 		}
 	}
 
@@ -70,5 +81,15 @@ public class PlayerController : MonoBehaviour
 		Destroy(touched_object.gameObject);
 		Instantiate(this.explosion_player, this.transform.position, this.transform.rotation);
 		Destroy(this.gameObject);
+	}
+
+	public void UpdateLife(GameObject enemy_shot, int life_pts)
+	{
+		if (enemy_shot != PlayerController.last_enemy_shot)
+		{
+			this.life							+= life_pts;
+			this.life_text.text					= "Life: " + this.life.ToString() + "%";
+			PlayerController.last_enemy_shot	= enemy_shot;
+		}
 	}
 }
