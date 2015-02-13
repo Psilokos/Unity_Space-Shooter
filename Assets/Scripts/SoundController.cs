@@ -44,6 +44,6 @@ public class SoundController : MonoBehaviour
 		this.explosion_enemy.mute		= mute_toggle.isOn;
 		this.explosion_player.mute		= mute_toggle.isOn;
 		this.shot_enemy.mute			= mute_toggle.isOn;
-		this.shot_player.mute			= mute_toggle.isOn;
+		this.shot_player.volume			= ((mute_toggle.isOn) ? (0.0f) : (1.0f));
 	}
 }
