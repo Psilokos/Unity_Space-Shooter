@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour
 	public			GameObject			player;
 	public			GameObject			asteroid;
 	public			GameObject			enemy;
-	public			AudioSource			player_shot;
 	public			float				time_before_first_wave;
 	public			float				time_between_spawns;
 	public			float				time_between_waves;
@@ -119,7 +118,10 @@ public class GameController : MonoBehaviour
 			this.life_slider.SetActive(this.player_state);
 			this.restart_text.SetActive(!this.player_state);
 			if (Input.GetKey(KeyCode.R))
+			{
+				this.pause_menu_canvas.SetActive(true);
 				Application.LoadLevel(Application.loadedLevel);
+			}
 		}
 	}
 
@@ -139,7 +141,6 @@ public class GameController : MonoBehaviour
 	private void PauseMenu()
 	{
 		this.pause_menu_canvas.SetActive(this.is_paused);
-		this.player_shot.mute	= this.is_paused;
 		Time.timeScale			= ((this.is_paused) ? (0.0f) : (1.0f));
 	}
 }
