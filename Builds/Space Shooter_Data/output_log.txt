@@ -13,7 +13,7 @@ Platform assembly: C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shoo
 Loading C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\christophe\Documents\Unity\Learning\Unity_Space-Shooter\Builds\Space Shooter_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.065 seconds
+- Completed reload, in  0.035 seconds
 desktop: 1680x1050 59Hz; virtual: 3600x1080 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
