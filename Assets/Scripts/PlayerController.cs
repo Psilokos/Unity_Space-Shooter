@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 	public			GameObject				shot;
 	public			Transform				shot_spawn_left;
 	public			Transform				shot_spawn_right;
-	public			Text					life_text;
+	public			Slider					life_slider;
 	public			float					speed;
 	public			float					tilt;
 	public			float					fire_rate;
@@ -40,12 +40,12 @@ public class PlayerController : MonoBehaviour
 	{
 		GameObject[] shots;
 
-		if (Input.GetButton("Fire") && Time.time > this.next_shot)
+		if (Input.GetButton("Fire") && Time.time > this.next_shot && !this.game_controller.is_paused)
 		{
 			this.next_shot	= Time.time + this.fire_rate;
 			shots			= new GameObject[2];
-			shots[0]			= Instantiate(this.shot, this.shot_spawn_left.position, this.shot_spawn_left.rotation) as GameObject;
-			shots[1]			= Instantiate(this.shot, this.shot_spawn_right.position, this.shot_spawn_right.rotation) as GameObject;
+			shots[0]		= Instantiate(this.shot, this.shot_spawn_left.position, this.shot_spawn_left.rotation) as GameObject;
+			shots[1]		= Instantiate(this.shot, this.shot_spawn_right.position, this.shot_spawn_right.rotation) as GameObject;
 			foreach (GameObject shot in shots)
 				shot.transform.parent = this.game_controller.transform;
 		}
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 		if (enemy_shot != PlayerController.last_enemy_shot)
 		{
 			this.life							+= life_pts;
-			this.life_text.text					= "Life: " + this.life.ToString() + "%";
+			this.life_slider.value				= this.life;
 			PlayerController.last_enemy_shot	= enemy_shot;
 		}
 	}
